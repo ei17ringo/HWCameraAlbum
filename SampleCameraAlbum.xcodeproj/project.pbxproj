@@ -15,6 +15,8 @@
 		1BD78F1D1A53803E001EC022 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1BD78F1C1A53803E001EC022 /* Images.xcassets */; };
 		1BD78F201A53803E001EC022 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1BD78F1E1A53803E001EC022 /* LaunchScreen.xib */; };
 		1BD78F2C1A53803E001EC022 /* SampleCameraAlbumTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BD78F2B1A53803E001EC022 /* SampleCameraAlbumTests.m */; };
+		1BD78F361A5384C7001EC022 /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1BD78F351A5384C7001EC022 /* AssetsLibrary.framework */; };
+		1BD78F391A538B1F001EC022 /* nopreview.png in Resources */ = {isa = PBXBuildFile; fileRef = 1BD78F381A538B1F001EC022 /* nopreview.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -43,6 +45,8 @@
 		1BD78F251A53803E001EC022 /* SampleCameraAlbumTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SampleCameraAlbumTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		1BD78F2A1A53803E001EC022 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1BD78F2B1A53803E001EC022 /* SampleCameraAlbumTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SampleCameraAlbumTests.m; sourceTree = "<group>"; };
+		1BD78F351A5384C7001EC022 /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
+		1BD78F381A538B1F001EC022 /* nopreview.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = nopreview.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -50,6 +54,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1BD78F361A5384C7001EC022 /* AssetsLibrary.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -66,6 +71,7 @@
 		1BD78F001A53803E001EC022 = {
 			isa = PBXGroup;
 			children = (
+				1BD78F351A5384C7001EC022 /* AssetsLibrary.framework */,
 				1BD78F0B1A53803E001EC022 /* SampleCameraAlbum */,
 				1BD78F281A53803E001EC022 /* SampleCameraAlbumTests */,
 				1BD78F0A1A53803E001EC022 /* Products */,
@@ -101,6 +107,7 @@
 		1BD78F0C1A53803E001EC022 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				1BD78F371A538B1F001EC022 /* images */,
 				1BD78F0D1A53803E001EC022 /* Info.plist */,
 				1BD78F0E1A53803E001EC022 /* main.m */,
 			);
@@ -122,6 +129,14 @@
 				1BD78F2A1A53803E001EC022 /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		1BD78F371A538B1F001EC022 /* images */ = {
+			isa = PBXGroup;
+			children = (
+				1BD78F381A538B1F001EC022 /* nopreview.png */,
+			);
+			path = images;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -207,6 +222,7 @@
 				1BD78F1B1A53803E001EC022 /* Main.storyboard in Resources */,
 				1BD78F201A53803E001EC022 /* LaunchScreen.xib in Resources */,
 				1BD78F1D1A53803E001EC022 /* Images.xcassets in Resources */,
+				1BD78F391A538B1F001EC022 /* nopreview.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -349,7 +365,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				INFOPLIST_FILE = SampleCameraAlbum/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -359,7 +377,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				INFOPLIST_FILE = SampleCameraAlbum/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};

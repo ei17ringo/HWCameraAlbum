@@ -8,7 +8,18 @@
 
 #import <UIKit/UIKit.h>
 
-@interface FirstViewController : UIViewController
+@interface FirstViewController : UIViewController{
+    NSString *_assetsUrl;    //assetsUrlを格納するインスタンス
+    ALAssetsLibrary *_library;  //ALAssetsLibraryのインスタンス
+}
+
+@property (weak, nonatomic) IBOutlet UIButton *choosePhoto;
+@property (weak, nonatomic) IBOutlet UIButton *takePhoto;
+
+- (IBAction)tapChoosePhoto:(id)sender;
+- (IBAction)tapTakePhoto:(id)sender;
+
+@property (weak, nonatomic) IBOutlet UIImageView *previewImage;
 
 
 @end
