@@ -31,8 +31,9 @@
     // Dispose of any resources that can be recreated.
 }
 
-#pragma mark 写真を今撮る（カメラロール）処理
+#pragma mark カメラ処理
 - (IBAction)tapChoosePhoto:(id)sender {
+    //カメラロールから選ぶ
     
     //初期値として-1をセット
     UIImagePickerControllerSourceType sourceType = -1;
@@ -56,13 +57,39 @@
 }
 
 - (IBAction)tapTakePhoto:(id)sender {
+    // 写真を今とる
+    // カメラが使用可能かどうか判定する
+    if (![UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
+        NSLog(@"カメラ機能へアクセスできません");
+        return;
+    }
+    
+    // UIImagePickerControllerのインスタンスを生成
+    UIImagePickerController *imagePickerController = [[UIImagePickerController alloc] init];
+    
+    // デリゲートを設定
+    imagePickerController.delegate = (id)self;
+    
+    // 画像の取得先をカメラに設定
+    imagePickerController.sourceType = UIImagePickerControllerSourceTypeCamera;
+    
+    // 撮影画面をモーダルビューとして表示する
+    [self presentViewController:imagePickerController animated:YES completion:nil];
+
 }
 
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
 {
     //カメラライブラリから選んだ写真のURLを取得。
     _assetsUrl = [(NSURL *)[info objectForKey:@"UIImagePickerControllerReferenceURL"] absoluteString];
+    
     [self showPhoto:_assetsUrl];
+    
+    if (!_assetsUrl){
+        UIImage *originalImage = (UIImage *)[info objectForKey:UIImagePickerControllerOriginalImage];
+        self.previewImage.image = originalImage;
+    }
+    
     
     [picker dismissViewControllerAnimated:YES completion:nil];  //元の画面に戻る
 }
