@@ -21,6 +21,7 @@
 
 @property (weak, nonatomic) IBOutlet UIImageView *previewImage;
 
+@property (weak, nonatomic) IBOutlet UILabel *noticeLabel;
 
 @end
 

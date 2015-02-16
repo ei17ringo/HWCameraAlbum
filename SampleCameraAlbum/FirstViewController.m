@@ -86,8 +86,22 @@
     [self showPhoto:_assetsUrl];
     
     if (!_assetsUrl){
-        UIImage *originalImage = (UIImage *)[info objectForKey:UIImagePickerControllerOriginalImage];
-        self.previewImage.image = originalImage;
+        //カメラで撮った時
+        UIImage *originalImage=(UIImage *)[info objectForKey:UIImagePickerControllerOriginalImage];
+        
+        originalImage=(UIImage *)[info objectForKey:UIImagePickerControllerEditedImage];
+        
+        [_library writeImageToSavedPhotosAlbum:originalImage.CGImage orientation:(ALAssetOrientation)originalImage.imageOrientation completionBlock:^(NSURL *assetURL,NSError *error){
+            if(error ){
+                NSLog(@"えらー");
+            }else{
+                NSLog(@"save");
+                _assetsUrl=[(NSURL *)assetURL absoluteString];
+                [self showPhoto:_assetsUrl];
+                
+            }
+        }];
+
     }
     
     
@@ -110,6 +124,8 @@
                       //ALAssetRepresentationを使用して、フルスクリーン用の画像をUIImageに変換
                       //fullScreenImageで元画像と同じ解像度の写真を取得する。
                       UIImage *fullscreenImage = [UIImage imageWithCGImage:[assetRepresentation fullScreenImage]];
+                      self.noticeLabel.text = @"この写真がアルバムに追加されました";
+
                       self.previewImage.image = fullscreenImage; //イメージをセット
                   }else{
                       NSLog(@"データがありません");
