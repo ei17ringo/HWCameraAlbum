@@ -99,7 +99,7 @@
                         </subviews>
                         <constraints>
                             <constraint firstItem="hJn-VC-aH9" firstAttribute="leading" secondItem="Vyv-Da-hsS" secondAttribute="leading" id="Hac-tC-rDN"/>
-                            <constraint firstAttribute="bottom" secondItem="hJn-VC-aH9" secondAttribute="bottom" constant="632" id="clU-Lo-LtF"/>
+                            <constraint firstAttribute="bottom" secondItem="hJn-VC-aH9" secondAttribute="bottom" constant="50" id="clU-Lo-LtF"/>
                             <constraint firstItem="hJn-VC-aH9" firstAttribute="width" secondItem="Vyv-Da-hsS" secondAttribute="width" id="gPT-22-5cx"/>
                             <constraint firstAttribute="trailing" secondItem="hJn-VC-aH9" secondAttribute="trailing" id="hYY-I8-1Oy"/>
                             <constraint firstItem="hJn-VC-aH9" firstAttribute="top" secondItem="Vyv-Da-hsS" secondAttribute="top" id="uIW-C9-lnu"/>

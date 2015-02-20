@@ -89,7 +89,7 @@
         //カメラで撮った時
         UIImage *originalImage=(UIImage *)[info objectForKey:UIImagePickerControllerOriginalImage];
         
-        originalImage=(UIImage *)[info objectForKey:UIImagePickerControllerEditedImage];
+        //originalImage=(UIImage *)[info objectForKey:UIImagePickerControllerEditedImage];
         
         [_library writeImageToSavedPhotosAlbum:originalImage.CGImage orientation:(ALAssetOrientation)originalImage.imageOrientation completionBlock:^(NSURL *assetURL,NSError *error){
             if(error ){
@@ -111,6 +111,10 @@
 //assetsから取得した画像を表示する
 -(void)showPhoto:(NSString *)url
 {
+    
+    //表示前にUserDefaultに保存
+    [self seveAssetsURL];
+    
     //URLからALAssetを取得
     [_library assetForURL:[NSURL URLWithString:url]
               resultBlock:^(ALAsset *asset) {
@@ -132,6 +136,28 @@
                   }
                   
               } failureBlock: nil];
+}
+
+//UserDefaultにassetsURLを保存
+-(void)seveAssetsURL{
+
+    //UserDefaultObjectを用意する
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    
+    //一旦配列に取り出す
+    NSMutableArray *assetsURLs = [[defaults objectForKey:@"assetsURLs"] mutableCopy];
+    
+    if (assetsURLs == nil) {
+        assetsURLs = [NSMutableArray new];
+    }
+    
+    //配列に新しいURLを追加
+    [assetsURLs addObject:_assetsUrl];
+    
+    //assetsURLを保存
+    [defaults setObject:assetsURLs forKey:@"assetsURLs"];
+    
+    [defaults synchronize];
 }
 
 @end

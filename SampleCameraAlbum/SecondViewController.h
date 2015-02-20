@@ -8,7 +8,13 @@
 
 #import <UIKit/UIKit.h>
 
-@interface SecondViewController : UIViewController
+@interface SecondViewController : UIViewController{
+    ALAssetsLibrary *_library;  //ALAssetsLibraryのインスタンス
+    int _img_x;
+    int _img_y;
+    int _counter;
+}
+
 
 
 @end
