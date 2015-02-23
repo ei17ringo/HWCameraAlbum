@@ -7,6 +7,7 @@
 //
 
 #import <AssetsLibrary/AssetsLibrary.h>
+#import <ImageIO/ImageIO.h>
 
 #import "SecondViewController.h"
 
@@ -95,6 +96,34 @@
                       
                       UIImageView *imagev = [[UIImageView alloc]initWithFrame:CGRectMake(_img_x, _img_y, 160, 160)];
                       imagev.image = fullscreenImage;
+                      
+                      //------- exifを取得する --------
+                      // raw data
+                      NSUInteger size = [assetRepresentation size];
+                      uint8_t *buff = (uint8_t *)malloc(sizeof(uint8_t)*size);
+                      if(buff != nil){
+                          NSError *error = nil;
+                          NSUInteger bytesRead = [assetRepresentation getBytes:buff fromOffset:0 length:size error:&error];
+                          if (bytesRead && !error) {
+                              NSData *photo = [NSData dataWithBytesNoCopy:buff length:bytesRead freeWhenDone:YES];
+                              
+                              CGImageSourceRef cgImage = CGImageSourceCreateWithData((CFDataRef)photo, nil);
+                              NSDictionary *metadata = (NSDictionary *)CFBridgingRelease(CGImageSourceCopyPropertiesAtIndex(cgImage, 0, nil));
+                              if (metadata) {
+                                  NSLog(@"%@", [metadata description]);
+                              } else {
+                                  NSLog(@"no metadata");
+                              }
+
+                          }
+                          if (error) {
+                              NSLog(@"error:%@", error);
+                              free(buff);
+                          }
+                          
+                      }
+                      //------- exifを取得する(ここまで) --------
+                      
                       
                       [self.view addSubview:imagev];
                       _counter++;
